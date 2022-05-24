@@ -22,7 +22,7 @@ public class AdminDeleteRoomServlet extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			AdminDeleteRoom del = new AdminDeleteRoom(DBConnect.getcon());
-			if (del.DeleteRoom(id) > 0) {
+			if (AdminDeleteRoom.DeleteRoom(id) > 0) {
 				response.sendRedirect("AdminViewRooms.jsp");
 
 			}

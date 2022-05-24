@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class AdminDeleteRoom {
-	private Connection con;
+	private static Connection con;
 
 	public AdminDeleteRoom(Connection con) {
 		super();
 		this.con = con;
 	}
 
-	public int DeleteRoom(int id) {
+	public static int DeleteRoom(int id) {
 		try {
 			PreparedStatement pstmt = con
 					.prepareStatement("DELETE FROM public.\"RoomDetails\"\r\n" + "	WHERE \"Id\"=?;");

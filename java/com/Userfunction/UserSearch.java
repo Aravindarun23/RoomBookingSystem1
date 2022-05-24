@@ -6,13 +6,13 @@ import java.util.List;
 import com.AssignValues.RoomDetails;
 
 public class UserSearch {
-	private Connection con;
+	private static Connection con;
 	public UserSearch(Connection con) {
 		super();
-		this.con=con;
+		UserSearch.con=con;
 	}
 	
-	public  List<RoomDetails> UserSerachRoom(String Floor,String Cost,String Roomtype) throws SQLException {
+	public static List<RoomDetails> UserSerachRoom(String Floor,String Cost,String Roomtype) throws SQLException {
 		List<RoomDetails> ListOfRooms= new ArrayList<RoomDetails>();
 		RoomDetails room=null;
 		PreparedStatement pstmt=con.prepareStatement("SELECT * FROM public.\"RoomDetails\" WHERE \"RoomType\"=? AND \"Floor\"=? AND  \"Cost\"<=? ");

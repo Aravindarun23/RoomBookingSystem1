@@ -6,13 +6,13 @@ import java.util.List;
 import com.AssignValues.RoomDetails;
 
 public class ViewRoomDetails {
-	private Connection con;
+	private static Connection con;
 
 	public ViewRoomDetails(Connection con) {
 		super();
-		this.con=con;
+		ViewRoomDetails.con=con;
 	}
-	public List<RoomDetails> getAllrooms(){
+	public static List<RoomDetails> getAllrooms(){
 		List<RoomDetails> ListOfRooms= new ArrayList<RoomDetails>();
 		RoomDetails room=null;
 		try {
