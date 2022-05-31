@@ -4,67 +4,83 @@ public class RoomDetails {
 	private int Id;
 	private String Floor;
 	private String Roomtype;
-	private String Availablityofrooms;
+	private int Maxnumberofperson;
 	private int Cost;
-	private String Roomimage;
+	private String Totalbeds;
+
 	public RoomDetails() {
+		super();
+
+	}
+
+	public RoomDetails(int id, String roomtype, String floor,int maxnumofpersons, int cost,String totalbeds){
+		Id = id;
+		Roomtype = roomtype;
+		Floor = floor;
+		Maxnumberofperson = maxnumofpersons;
+		Cost = cost;
+		Totalbeds=totalbeds;
+		
+		
+		
 		
 	}
-	
-	public RoomDetails(int id,String floor, String roomtype, String availablityofrooms, int cost, String roomimage) {
-		Id=id;
-		Floor = floor;
+
+	public RoomDetails(String roomtype, String floor, int maxnumofpersons, int cost,String totalbeds) {
 		Roomtype = roomtype;
-		Availablityofrooms = availablityofrooms;
-		Cost = cost;
-		Roomimage = roomimage;
-//		System.out.println(Cost);
-	}
-	public RoomDetails(String floor, String roomtype, String availablityofrooms, int cost, String roomimage) {
 		Floor = floor;
-		Roomtype = roomtype;
-		Availablityofrooms = availablityofrooms;
+		Maxnumberofperson = maxnumofpersons;
 		Cost = cost;
-		Roomimage = roomimage;
+		Totalbeds= totalbeds;
+		
 	}
-	
+
 	public int getId() {
 		return Id;
 	}
-	public String getFloor() {
-		return Floor;
+
+	public void setId(int id) {
+		Id = id;
 	}
+
 	public String getRoomtype() {
 		return Roomtype;
 	}
-	public String getAvailablityofrooms() {
-		return Availablityofrooms;
-	}
-	public int getCost() {
-		return Cost;
-	}
-	public String getRoomimage() {
-		return Roomimage;
-	}
-	
-	
-	public void setId(int id) {
-		Id= id;
-	}
-	public void setFloor(String floor) {
-		Floor = floor;
-	}
+
 	public void setRoomtype(String roomtype) {
 		Roomtype = roomtype;
 	}
-	public void setAvailablityofrooms(String availablityofrooms) {
-		Availablityofrooms = availablityofrooms;
+
+
+	public int getMaxnumberofperson() {
+		return Maxnumberofperson;
 	}
+
+	public void setMaxnumberofperson(int maxnumberofperson) {
+		Maxnumberofperson = maxnumberofperson;
+	}
+
+	public String getFloor() {
+		return Floor;
+	}
+
+	public void setFloor(String floor) {
+		Floor = floor;
+	}
+
+	public int getCost() {
+		return Cost;
+	}
+
 	public void setCost(int cost) {
 		Cost = cost;
 	}
-	public void setRoomimage(String roomimage) {
-		Roomimage = roomimage;
+
+	public String getTotalbeds() {
+		return Totalbeds;
 	}
 
+	public void setTotalbeds(String totalbeds) {
+		this.Totalbeds = totalbeds;
+	}
 }

@@ -1,7 +1,5 @@
 package com.Adminfunction;
 
-import com.validation.DBConnect;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +19,6 @@ public class AdminDeleteRoomServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
-			AdminDeleteRoom del = new AdminDeleteRoom(DBConnect.getcon());
 			if (AdminDeleteRoom.DeleteRoom(id) > 0) {
 				response.sendRedirect("AdminViewRooms.jsp");
 

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -22,10 +23,14 @@ public class LoginServlet extends HttpServlet {
 		String usermail = request.getParameter("usermail");
 		String userpass = request.getParameter("userpass");
 		try {
-			int value = DBConnect.Validation(usermail, userpass);
+			int value = DBConnect.login(usermail, userpass);
 			if (value == 1) {
+				HttpSession session=request.getSession();
+				session.setAttribute("usermail",usermail);
 				response.sendRedirect("Welcome.jsp");
 			} else if (value == 2) {
+				HttpSession session=request.getSession();
+				session.setAttribute("usermail",usermail);
 				response.sendRedirect("AdminPage.jsp");
 			}
 			else {

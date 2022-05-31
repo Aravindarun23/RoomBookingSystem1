@@ -5,18 +5,18 @@ import java.sql.PreparedStatement;
 
 import com.validation.DBConnect;
 
-public class AdminDeleteRoom {
+public class UserDetailsDelete {
 	private static Connection con=DBConnect.getcon();
 
-	public static int DeleteRoom(int id) {
+	public static void DeleteUser(int id) {
 		try {
 			PreparedStatement pstmt = con
-					.prepareStatement("DELETE FROM public.\"RoomDetails\"\r\n" + "	WHERE \"id\"=?;");
+					.prepareStatement("DELETE FROM public.\"UserDetails\"\r\n" + "	WHERE \"id\"=?;");
 			pstmt.setInt(1, id);
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
 	}
+
 }
