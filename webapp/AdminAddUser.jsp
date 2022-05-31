@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.validation.DBConnect"%>
-<%@ page import="com.Adminfunction.AdminEditRoom"%>
-<%@ page import="com.AssignValues.RoomDetails"%>
-<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="#">
-<title>EditRoom</title>
-</head>
+<title>Signpage</title>
 <style>
 @charset "ISO-8859-1";
 
@@ -29,27 +23,23 @@
 }
 
 body {
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #f7efef;
+	background-color: #4099f4;
 }
 
 .container {
 	position: relative;
 	background: white;
 	max-width: 350px;
-	height: 450px;
 	width: 100%;
 	border-radius: 10px;
 	box-shadow: 0 5px 10px black;
-	margin-top: 20px;
 }
 
 .container .form {
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 30px;
 }
 
 .container .form .title {
@@ -66,21 +56,20 @@ body {
 }
 
 .input-area input {
-	position: relative;
+	position: absolute;
 	height: 100%;
-	width: 50%;
-	padding: 0 20px;
-	border: 1px solid black;
+	width: 100%;
+	padding: 0 50px;
+	border: none;
 	outline: none;
 	font-size: 12px;
-	left:30px;
-	 
+	border-bottom: 2px solid #ccc;
 }
 
 .input-area i {
 	position: relative;
 	font-size: 23px;
-	bottom: 5px;
+	bottom: 4px;
 }
 
 .form .button {
@@ -89,7 +78,7 @@ body {
 
 .form .button input {
 	border: none;
-	background-color: black;
+	background-color: #4095f4;
 	width: 100%;
 	height: 40px;
 	letter-spacing: 1px;
@@ -99,7 +88,7 @@ body {
 }
 
 .form .login-signup {
-	margin-top: 6px;
+	margin-top: 30px;
 	text-align: center;
 }
 
@@ -108,6 +97,7 @@ body {
 	color: Red;
 }
 </style>
+</head>
 <body>
 <% 
 
@@ -116,43 +106,45 @@ if(email==null){
 	response.sendRedirect("Login.jsp");
 	
 }%>
-	<%
-	int id = Integer.parseInt(request.getParameter("id"));
-	RoomDetails room = AdminEditRoom.getRoomById(id);
-	%>
 	<div class="container">
 		<div class="form">
-			<span class="title">Update Room</span>
-			<form method="post" action="AdminEditRoomServlet?id=<%=id%>">
+			<span class="title">Add User</span>
+			<form method="post" action="AdminAddUserServlet">
+			<div class="input-area">
+					<input type="text" placeholder="Enter Your Name" autocomplete="off"name="username" required>
+					 <i class="uil uil-user"></i>
+				</div>
+				<div class="input-area">
+					<input type="email" placeholder="Enter Your Email" autocomplete="off"name="useremail" required>
+					 <i class="uil uil-envelope"></i>
+				</div>
+				<div class="input-area">
+					<input type="password" placeholder="Enter Your Password" autocomplete="off" name="userpass" required>
+					 <i class="uil uil-lock"></i>
+				</div>
+				<div class="input-area">
+					<input type="text" placeholder="Mobile Number" autocomplete="off" name="usermobile" required>
+					 <i class="uil uil-phone-volume"></i>
+				</div>
+				<div class="input-area">
+					<input type="text" placeholder="Enter Your Address" autocomplete="off"name="useraddress" required>
+					 <i class="uil uil-envelope"></i>
+				</div>
+				<div class="input-area">
+					<input type="text" placeholder="Enter Your State" autocomplete="off" name="userstate" required>
+					 <i class="uil uil-lock"></i>
+				</div>
+				<div class="input-area">
+					<input type="text" placeholder="Enter your pincode" autocomplete="off" name="userpincode" required>
+					 <i class="uil uil-phone-volume"></i>
+				</div>
 				
-				<div class="input-area">
-					<span>Room Type : </span><input type="text" placeholder="Room Type" name="roomtype"
-						value="<%=room.getRoomtype()%>"> 
-				</div>
-				<div class="input-area">
-					<span>Floor : </span><input type="text" placeholder="Floor" name="floor"
-						value="<%=room.getFloor()%>"> 
-				</div>
-				<div class="input-area">
-					<span>Num of Persons : </span><input type="text" placeholder="Room Image" name="numberofpersons" value="<%=room.getMaxnumberofperson()%>"> 
-				</div>
-				
-				<div class="input-area">
-					<span>Price : </span><input type="number" placeholder="Cost" name="cost"
-						value="<%=room.getCost()%>">
-				</div>
-				<div class="input-area">
-					<span>Total beds : </span><input type="text" placeholder="number of beds"
-						name="totalbeds"
-						value=<%=room.getTotalbeds() %>> 
-				</div>
 				
 				<div class="button">
-					<input type="Submit" value="Update Now">
+					<input type="Submit" value="Add Guest Now">
 				</div>
 				<div class="login-signup">
-					<a href="AdminViewRooms.jsp" class=signup-text>
-					<i class="uil uil-arrow-left"></i>Back</a>
+				<a href="UserDetailsAdmin.jsp" class=signup-text>Back</a>
 				</div>
 			</form>
 		</div>

@@ -1,0 +1,74 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family:'Poppins', sans-serif;
+}
+body{
+	height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:#4099f4;
+}
+.container{
+	position:relative;
+	background:white;
+	max-width: 200px;
+	width:100%;
+	border-radius:10px;
+	box-shadow: 0 5px 10px black; 
+}
+.container .form{
+	padding:30px;
+}
+.container .form .title{
+	position:relative;
+	font-size:27px;
+	font-weight:600;	
+}
+.form .input-area{
+	position:relative; 
+	height:30px;
+	width:100%;
+	margin-top:30px;
+}
+.input-area input{
+	position:absolute;
+	height:100%;
+	width:100%;
+	padding:0 50px;
+	border:none;
+	outline:none;
+	font-size:12px;
+	border-bottom:2px solid #ccc;
+}
+.input-area i{
+	position:absolute;
+	font-size:23px;
+	margin-bottom:20px;
+}
+.form .button{
+	margin-top:25px;
+	
+}
+.form .button input{
+	border :none;
+	background-color:#4095f4;
+	width:100%;
+	height:40px;
+	letter-spacing:1px;
+	font-size:16px;
+	color:#fff;
+	border-radius:6px;	
+}
+.form .login-signup{
+	margin-top:30px;
+	text-align:center;
+}
+.form .login-signup a{
+	text-decoration:none;
+	color:Red;
+}

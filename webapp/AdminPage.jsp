@@ -38,13 +38,13 @@ nav span{
 }
 nav ul{
 	padding-left:10%; 
-	margin-left:19%;
+	margin-left:10%;
 	font-size:15px;
 }
 nav ul li{
 	display:inline-block;
 	list-style:none;
-	margin: 10px 30px;
+	margin: 20px 30px;
 }
 nav ul li a{
 	text-decoration:none;
@@ -71,16 +71,23 @@ nav ul li a{
 </head>
 
 <body>
+<% 
+
+String  email=(String) session.getAttribute("usermail");
+if(email==null){
+	response.sendRedirect("Login.jsp");
+	
+}%>
 	<div class="header">
 		<nav>
 			<h1>B</h1>
 			<span>ook.in</span>
 			<ul>
-				<li><a href="AdminViewRooms.jsp">AllRooms</a></li>
-				<li><a href="AddRoom.jsp">AddRooms</a></li>
-				<li><a href="#">Orders</a></li>
-				<li><a href="#">Contact</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><a href="AdminViewRooms.jsp">All Rooms</a></li>
+				<li><a href="AdminAddRoom.jsp">Add Rooms</a></li>
+				<li><a href="OrderDetailsAdmin.jsp">Order Details</a></li>
+				<li><a href="UserDetailsAdmin.jsp">Guest Details</a></li>
+				<li><a href="LogoutServlet">Logout</a></li>
 			</ul>
 		</nav>
 		<div class="text">
