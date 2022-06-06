@@ -10,37 +10,30 @@ import com.validation.DBConnect;
 
 public class UserOrderConfirm {
 	private static Connection con = DBConnect.getcon();
-	private static  String name;
-	private static String mobilenumber;
-	private static String email;
-	private static String roomtype;
+	private static int userid;
 
 	public static void setName(String usermail) throws SQLException {
 		PreparedStatement pstmt = con.prepareStatement("SELECT * FROM public.\"UserDetails\" where email=?;");
 		pstmt.setString(1, usermail);
 		ResultSet rs=pstmt.executeQuery();
 		rs.next();
-		name=rs.getString(2);
-		mobilenumber=rs.getString(5);
-		email=rs.getString(3);
+		userid=rs.getInt(1);
+		System.out.print(userid);
 		
 		
 	}
 	public static void setOrder(OrderDetails order) throws SQLException {
-		roomtype=order.getRoomtype();
 		
 		PreparedStatement pstmt = con.prepareStatement("INSERT INTO public.\"BookingDetails\"(\r\n"
-				+ "	useremail, username, mobilenunmber, roomtype,checkindate,checkoutdate,totalprice,orderstatus,roomid)\r\n"
-				+ "	VALUES (?, ?, ?, ?, ?, ? ,?,?,?);");
-		pstmt.setString(1, email);
-		pstmt.setString(2, name);
-		pstmt.setString(3, mobilenumber);
-		pstmt.setString(4, roomtype);
-		pstmt.setString(5, order.getCheckindate());
-		pstmt.setString(6, order.getCheckoutdate());
-		pstmt.setInt(7, order.getTotalamount());
-		pstmt.setString(8, "BOOKED");
-		pstmt.setInt(9, order.getRoomid());
+				+ "checkindate,checkoutdate,totalprice,orderstatus,roomid,userid)\r\n"
+				+ "	VALUES (?, ?, ?, ?, ?, ? );");
+		pstmt.setString(1, order.getCheckindate());
+		pstmt.setString(2, order.getCheckoutdate());
+		pstmt.setInt(3, order.getTotalamount());
+		pstmt.setString(4, "BOOKED");
+		pstmt.setInt(5, order.getRoomid());
+		pstmt.setInt(6, userid);
+		
 		pstmt.executeUpdate();
 		
 		

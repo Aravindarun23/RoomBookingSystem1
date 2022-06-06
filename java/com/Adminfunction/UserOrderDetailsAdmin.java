@@ -17,7 +17,7 @@ package com.Adminfunction;
 		public static List<OrderDetails> getUserbookings() throws SQLException {
 			List<OrderDetails> Listoforders = new ArrayList<OrderDetails>();
 			OrderDetails order = null;
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM public.\"BookingDetails\" ;");
+			PreparedStatement pstmt = con.prepareStatement("select \"BookingDetails\".orderid,\"UserDetails\".name,\"UserDetails\".email,\"UserDetails\".mobilenumber,\"RoomDetails\".roomtype,\"BookingDetails\".checkindate,\"BookingDetails\".checkoutdate,\"BookingDetails\".totalprice,\"BookingDetails\".orderstatus from \"BookingDetails\" join \"UserDetails\" on \"BookingDetails\".userid=\"UserDetails\".id join \"RoomDetails\" on \"BookingDetails\".roomid=\"RoomDetails\".id;");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				order = new OrderDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),

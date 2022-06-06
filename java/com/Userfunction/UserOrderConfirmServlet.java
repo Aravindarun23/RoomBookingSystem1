@@ -26,7 +26,6 @@ public class UserOrderConfirmServlet extends HttpServlet {
 			UserOrderConfirm.setOrder(order);
 			response.sendRedirect("Welcome.jsp");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -15,7 +15,7 @@ private static Connection con=DBConnect.getcon();
 		pstmt.setInt(1, id);
 		ResultSet rs=pstmt.executeQuery();
 		rs.next();
-		String status=rs.getString(9);
+		String status=rs.getString(5);
 		
 		
 		
@@ -29,7 +29,7 @@ private static Connection con=DBConnect.getcon();
 			
 		}
 		else {
-			pst.setString(1,"CHECKOUT");
+			pst.setString(1,"CHECK_OUT");
 			pst.setInt(2, id);
 			pst.executeUpdate();
 			

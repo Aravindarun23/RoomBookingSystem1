@@ -1,8 +1,10 @@
 package com.validation;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,19 +24,33 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String usermail = request.getParameter("usermail");
 		String userpass = request.getParameter("userpass");
+		int id = 0;
 		try {
-			int value = DBConnect.login(usermail, userpass);
-			if (value == 1) {
+			id = DBConnect.login(usermail, userpass);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		try {
+			if (id!=0) {
 				HttpSession session=request.getSession();
+				session.setAttribute("userid", id);
 				session.setAttribute("usermail",usermail);
 				response.sendRedirect("Welcome.jsp");
-			} else if (value == 2) {
+			} else if (DBConnect.adminlogin(usermail,userpass)) {
 				HttpSession session=request.getSession();
 				session.setAttribute("usermail",usermail);
 				response.sendRedirect("AdminPage.jsp");
 			}
 			else {
-				response.sendRedirect("Login.jsp");
+				response.setContentType("text/html");  
+		        PrintWriter out=response.getWriter();
+				RequestDispatcher dr=request.getRequestDispatcher("Login.jsp");
+				dr.include(request, response);
+				out.print("Please enter valid inputs");
+				out.close();
+				
 			}
 		}
 		catch (Exception e)

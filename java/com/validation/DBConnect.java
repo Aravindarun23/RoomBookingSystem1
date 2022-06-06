@@ -17,28 +17,40 @@ public class DBConnect {
 	}
 	
 	public static int login(String usermail, String userpass) throws SQLException {
-		int value = 0;
 		try {
-			if (usermail.equals("Admin2302@gmail.com") && userpass.equals("24689")) {
-				value = 2;
-			} else {
-				Connection con = getcon();
-				PreparedStatement ps = con.prepareStatement("SELECT * from \"UserDetails\";");
-				ResultSet rs = ps.executeQuery();
-				while (rs.next()) {
-					
-					if (usermail.equals(rs.getString(3)) && userpass.equals(rs.getString(4)))
-					{
-						value=1;
-						
-					}
-				}
+			Connection con = getcon();
+			PreparedStatement pstmt = con.prepareStatement("SELECT * from \"UserDetails\" where email=? and password=?;");
+			pstmt.setString(1, usermail);
+			pstmt.setString(2, userpass);
+			ResultSet rs= pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
 			}
-			return value;	
+			
 		}
 		catch(Exception e) {
-			return value;
+			return 0;
 		}
+		return 0;
+
+	}
+	public static boolean adminlogin(String adminmail, String adminpass) throws SQLException {
+		try {
+			Connection con = getcon();
+			PreparedStatement pstmt = con.prepareStatement("SELECT * from \"Admin_Details\" where admin_username=? and admin_password=?;");
+			pstmt.setString(1, adminmail);
+			pstmt.setString(2, adminpass);
+			ResultSet rs= pstmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+			
+		}
+		catch(Exception e) {
+			return false;
+		}
+		return false;
+
 	}
 	public static int Signup(String username,String useremail,String userpass,String usermobile,String useraddress,String userstate,String userpincode) throws SQLException  {
 		int value=0;

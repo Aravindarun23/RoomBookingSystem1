@@ -25,10 +25,8 @@ public class UserSearch {
 				ResultSet Rs = ps.executeQuery();
 				boolean valid = true;
 				while (Rs.next()) {
-					System.out.println(Rs.getString(2));
-
-					int indate = DateAssign.splitDate(Rs.getString(6));
-					int outdate = DateAssign.splitDate(Rs.getString(7));
+					int indate = DateAssign.splitDate(Rs.getString(2));
+					int outdate = DateAssign.splitDate(Rs.getString(3));
 					int Checkindate = DateAssign.splitDate(checkindate);
 					int Checkoutdate = DateAssign.splitDate(checkoutdate);
 					if (((Checkindate > outdate) && (Checkoutdate > outdate))

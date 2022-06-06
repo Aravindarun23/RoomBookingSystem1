@@ -15,7 +15,7 @@ public class UserOrderCancel {
 		pstmt.setInt(1, id);
 		ResultSet rs=pstmt.executeQuery();
 		rs.next();
-		String status=rs.getString(9);
+		String status=rs.getString(5);
 		
 		
 		
